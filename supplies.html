@@ -2,8 +2,20 @@
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>AFA Supplies</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+<title>AFA Supplies | We find, quote, buy, check and deliver business supplies</title>
+<meta name="description" content="Printing and imaging, office, security, industrial and hard-to-find parts for small and growing businesses. Send the list, get one written quote.">
+<link rel="canonical" href="https://afasuppliesllc.com/supplies.html">
+<meta name="theme-color" content="#0B2D55">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AFA Supplies LLC">
+<meta property="og:title" content="AFA Supplies | We find, quote, buy, check and deliver business supplies">
+<meta property="og:description" content="Printing and imaging, office, security, industrial and hard-to-find parts for small and growing businesses. Send the list, get one written quote.">
+<meta property="og:url" content="https://afasuppliesllc.com/supplies.html">
+<meta property="og:image" content="https://afasuppliesllc.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=Instrument+Sans:wght@400;500;600&family=Caveat:wght@500;600&display=swap">
@@ -12,7 +24,7 @@
    Orange fills buttons and numerals. Text that must stay readable on light grounds uses a deeper orange. */
 :root {
   --bg: #F4F6F9; --panel: #FFFFFF; --ink: #0B2D55; --muted: #4A5B75; --rule: #D2D9E4;
-  --accent: #E56F14; --accent-ink: #0B2D55; --accent-text: #B04F08; --mark: #FFCFA3;
+  --accent: #E56F14; --accent-ink: #072244; --accent-text: #B04F08; --mark: #FFCFA3;
   --band: #0B2D55; --band-ink: #F4F6F9; --band-muted: #B5C3D8; --band-num: #F28A34;
   --note: #FFE2C6; --note-ink: #0B2D55; --field: #F8FAFC;
   --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
@@ -187,17 +199,25 @@ img { max-width: 100%; }
 .brand { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; }
 .mark-logo.brand .brandtext { font-family: var(--display); font-weight: 800; font-size: 24px; letter-spacing: -0.025em; color: var(--ink); }
 .brand .logo-img.mono { height: 54px; }
+
+body{margin:0}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.privacy{margin:0;font-size:14px;color:var(--muted)}
+.skip{position:absolute;left:-9999px;top:8px;background:var(--ink);color:var(--bg);padding:10px 16px;z-index:10}
+.skip:focus{left:8px}
 </style>
 </head><body>
 
 
+<a class="skip" href="#top">Skip to content</a>
 <div class="wrap">
   <header class="bar">
-    <a class="mark-logo brand" href="index.html"><img class="logo-img" src="logo.png" alt="AFA Supplies"></a>
+    <a class="mark-logo brand" href="index.html"><img class="logo-img" src="logo.png" alt="AFA Supplies, home" width="180" height="216"></a>
     <nav aria-label="Sections">
       <a href="#get">What we get</a>
       <a href="#how">How it works</a>
       <a href="interiors.html">For your home</a>
+      <a href="about.html">About us</a>
       <a class="pill" href="#ask">Send us your list</a>
     </nav>
   </header>
@@ -301,12 +321,13 @@ img { max-width: 100%; }
       </div>
       <div class="formcard">
         <form id="rfq" action="https://formspree.io/f/myeeyapw" method="POST" novalidate>
+          <p class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></p>
           <div class="two">
             <div class="field"><label class="label" for="name">Your name</label><input id="name" name="name" type="text" autocomplete="name"></div>
             <div class="field"><label class="label" for="biz">Business</label><input id="biz" name="biz" type="text" autocomplete="organization"></div>
           </div>
           <div class="two">
-            <div class="field"><label class="label" for="email">Your email</label><input id="email" name="email" type="email" autocomplete="email"></div>
+            <div class="field"><label class="label" for="email">Your email (so we can reply)</label><input id="email" name="email" type="email" autocomplete="email" required></div>
             <div class="field"><label class="label" for="area">What kind of stuff</label>
               <select id="area" name="area">
                 <option>Printing and imaging</option>
@@ -325,6 +346,7 @@ img { max-width: 100%; }
           </div>
           <div class="field"><label class="label" for="items">Your list</label><textarea id="items" name="items" placeholder="One item per line. Part numbers, links and rough descriptions all work."></textarea></div>
           <button class="cta" type="submit">Send my request</button>
+          <p class="privacy">We use what you send only to answer your request. <a href="privacy.html">Privacy</a></p>
         </form>
         <div class="out" id="out" hidden aria-live="polite">
           <h3>Your list is ready to send</h3>
@@ -344,7 +366,7 @@ img { max-width: 100%; }
 
   <footer>
     <p>&copy; 2026 AFA Supplies LLC, Texas, USA. Since 2010. Serving businesses across the United States.</p>
-    <p><a href="index.html">All of AFA</a> &nbsp;/&nbsp; <a href="interiors.html">AFA Interior Designs</a></p>
+    <p><a href="index.html">All of AFA</a> &nbsp;/&nbsp; <a href="interiors.html">AFA Interior Designs</a> &nbsp;/&nbsp; <a href="about.html">About us</a> &nbsp;/&nbsp; <a href="privacy.html">Privacy</a></p>
   </footer>
 </div>
 
@@ -361,6 +383,7 @@ img { max-width: 100%; }
   var FORM_URL = 'https://formspree.io/f/myeeyapw';
   var h3 = out.querySelector('h3');
   var note = out.querySelector('p');
+  var btns = out.querySelector('.btns');
   var submitBtn = form.querySelector('button[type=submit]');
   var submitLabel = submitBtn.textContent;
 
@@ -372,10 +395,20 @@ img { max-width: 100%; }
       h3.textContent = 'Almost there';
       note.textContent = '';
       outtext.textContent = 'Add at least one item to your list first, then try again.';
-      mail.hidden = true;
+      btns.hidden = true;
       out.hidden = false;
       return;
     }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('email'))) {
+      h3.textContent = 'Almost there';
+      note.textContent = '';
+      outtext.textContent = 'Add a valid email address so we can reply to you.';
+      btns.hidden = true;
+      out.hidden = false;
+      document.getElementById('email').focus();
+      return;
+    }
+    btns.hidden = false;
     var lines = [
       'Request for AFA Supplies',
       '',
