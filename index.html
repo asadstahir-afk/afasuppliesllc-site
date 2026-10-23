@@ -1,0 +1,150 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>AFA Supplies</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+/* Brand colors come straight from the AFA logo: navy #0B2D55 and orange #E56F14. */
+:root {
+  --bg: #F4F6F9; --ink: #0B2D55; --muted: #4A5B75; --rule: #D2D9E4; --mark: #FFCFA3;
+  --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #071A31; --ink: #EAF0F8; --muted: #A8B8D0; --rule: #1F3A5E; --mark: #8A4411; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --bg: #071A31; --ink: #EAF0F8; --muted: #A8B8D0; --rule: #1F3A5E; --mark: #8A4411; color-scheme: dark; }
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 18px;
+  line-height: 1.6;
+  padding-block: 0;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 1160px; margin: 0 auto; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+h1, h2 { font-family: var(--display); font-optical-sizing: auto; margin: 0; text-wrap: balance; }
+.label { font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+.hl { background: linear-gradient(transparent 56%, var(--mark) 56% 94%, transparent 94%); padding: 0 0.06em; }
+
+.bar { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: center; justify-content: space-between; padding-block: 24px; }
+.logo { display: inline-flex; align-items: center; gap: 14px; font-family: var(--display); font-weight: 800; font-size: 30px; letter-spacing: -0.03em; text-decoration: none; }
+.logo-img { display: block; height: 56px; width: auto; background: #FFFFFF; padding: 4px 7px; border: 1px solid var(--rule); }
+.bar .label { color: var(--muted); }
+
+.intro { padding-block: 36px 44px; }
+h1 { font-weight: 800; font-size: clamp(42px, 7vw, 88px); line-height: 0.98; letter-spacing: -0.035em; margin-bottom: 22px; max-width: 12em; }
+.lede { font-size: clamp(18px, 2vw, 22px); line-height: 1.5; color: var(--muted); max-width: 32em; margin: 0; }
+
+.doors { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; padding-bottom: 56px; }
+.door { display: flex; flex-direction: column; justify-content: space-between; gap: 40px; padding: 36px 34px 32px; text-decoration: none; border: 2px solid var(--ink); min-width: 0; }
+.door .label { margin-bottom: 18px; display: block; }
+.door h2 { font-weight: 800; font-size: clamp(36px, 5vw, 60px); line-height: 1; letter-spacing: -0.035em; margin-bottom: 16px; }
+.door p { margin: 0; max-width: 24em; }
+.door .go { font-family: var(--display); font-weight: 700; font-size: 20px; display: inline-flex; gap: 12px; align-items: center; border-bottom: 3px solid currentColor; align-self: flex-start; padding-bottom: 3px; }
+.door.sup { background: #0B2D55; color: #F4F6F9; }
+.door.sup .label, .door.sup .go { color: #F28A34; }
+.door.sup p { color: #B5C3D8; }
+.door.int { background: #E56F14; color: #0B2D55; }
+.door.int .label, .door.int .go { color: #0B2D55; }
+.door.int p { color: #0B2D55; }
+@media (prefers-reduced-motion: no-preference) {
+  .door { transition: transform 0.18s; }
+  .door:hover { transform: translateY(-5px); }
+}
+
+.help { border-top: 3px solid var(--ink); padding-block: 28px 8px; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; align-items: baseline; }
+.help p { margin: 0; color: var(--muted); max-width: 34em; }
+.help b { font-family: var(--display); font-size: 22px; letter-spacing: -0.02em; overflow-wrap: anywhere; }
+footer { padding-block: 24px 48px; color: var(--muted); font-size: 15px; }
+footer p { margin: 0; }
+
+@media (max-width: 800px) {
+  .doors { grid-template-columns: minmax(0, 1fr); }
+  .door { padding: 28px 24px; gap: 28px; }
+}
+
+.lamp { transform-origin: 200px 109px; }
+@media (prefers-reduced-motion: no-preference) {
+  .lamp { animation: sway 3.4s ease-in-out infinite alternate; }
+  @keyframes sway { from { transform: rotate(-6deg); } to { transform: rotate(6deg); } }
+}
+.ilogo svg { height: 100%; width: auto; display: block; }
+.lockup { background: #FFFFFF; border: 1px solid var(--rule); padding: 22px 34px 24px; text-align: center; }
+.lockup svg { height: 118px; width: auto; display: block; margin: 0 auto 8px; }
+.lockup b { display: block; font-family: var(--display); font-weight: 800; font-size: 46px; letter-spacing: -0.02em; color: #0B2D55; line-height: 1; }
+.lockup span { display: block; font-family: var(--display); font-weight: 700; font-size: 13px; letter-spacing: 0.38em; color: #E56F14; margin-top: 8px; }
+
+.dl { display: inline-block; background: #FFFFFF; padding: 8px 12px; margin-bottom: 22px; }
+.dl svg, .dl img { height: 70px; width: auto; display: block; }
+
+.strip { overflow: hidden; background: var(--ink); color: var(--bg); margin-bottom: 24px; padding: 12px 0; font-family: var(--display); font-weight: 700; font-size: 18px; }
+.track { display: flex; gap: 0; width: max-content; }
+.track span { white-space: nowrap; padding: 0 18px; }
+.track span::after { content: "\2726"; color: #E56F14; margin-left: 36px; }
+.door { position: relative; }
+.sticker { position: absolute; top: 20px; right: 20px; background: #FFCFA3; color: #0B2D55; font-family: var(--display); font-weight: 800; font-size: 14px; padding: 7px 12px; transform: rotate(4deg); border: 2px solid #0B2D55; }
+.door.int .sticker { background: #0B2D55; color: #FFCFA3; border-color: #FFCFA3; transform: rotate(-4deg); }
+@media (prefers-reduced-motion: no-preference) {
+  .track { animation: slide 28s linear infinite; }
+  @keyframes slide { to { transform: translateX(-50%); } }
+  .door:hover .sticker { transform: rotate(-3deg) scale(1.08); }
+  .sticker { transition: transform .2s; }
+}
+@media (max-width: 800px) { .sticker { position: static; align-self: flex-start; } }
+</style>
+
+<div class="wrap">
+  <header class="bar">
+    <a class="logo" href="index.html"><img class="logo-img" src="monogram.png" alt=""><span>AFA</span></a>
+    <span class="label">Texas, USA · Since 2010</span>
+  </header>
+
+  <main>
+    <div class="intro">
+      <h1>Got a list? <span class="hl">We are the guy.</span></h1>
+      <p class="lede">Stocking a shop or styling a spare room, you send the wish list and we do the hunting, haggling and hauling. Pick your door.</p>
+    </div>
+
+    <div class="strip" aria-hidden="true"><div class="track"><span>label rolls</span><span>toner</span><span>badge readers</span><span>one very specific valve</span><span>a sofa</span><span>shop towels</span><span>a rug that ties the room together</span><span>safety glasses</span><span>good lamps</span><span>label rolls</span><span>toner</span><span>badge readers</span><span>one very specific valve</span><span>a sofa</span><span>shop towels</span><span>a rug that ties the room together</span><span>safety glasses</span><span>good lamps</span></div></div>
+    <div class="doors">
+      <a class="door sup" href="supplies.html">
+        <div>
+          <span class="dl"><img src="monogram.png" alt=""></span>
+          <span class="label">For your business</span>
+          <h2>AFA Supplies</h2>
+          <p>Printing, office, security, industrial and hard-to-find parts. We find it, quote it, buy it, check it and deliver it.</p>
+        </div>
+        <span class="sticker">Real humans, real fast</span>
+        <span class="go">Go to AFA Supplies <span aria-hidden="true">&rarr;</span></span>
+      </a>
+      <a class="door int" href="interiors.html">
+        <div>
+          <span class="dl"><svg viewBox="30 20 340 290" role="img" aria-label="AFA Interior Designs mark: the letter A with a pendant lamp"><path fill="#0B2D55" fill-rule="evenodd" d="M160 30 L240 30 L360 300 L285 300 L265 255 L135 255 L115 300 L40 300 Z M200 109 L247 215 L153 215 Z"/><g class="lamp"><line x1="200" y1="109" x2="200" y2="150" stroke="#0B2D55" stroke-width="4" stroke-linecap="round"/><path d="M178 172 A22 22 0 0 1 222 172 Z" fill="#E56F14"/><circle cx="200" cy="179" r="6.5" fill="#FFCFA3"/><line x1="186" y1="189" x2="178" y2="199" stroke="#E56F14" stroke-width="4" stroke-linecap="round"/><line x1="200" y1="191" x2="200" y2="203" stroke="#E56F14" stroke-width="4" stroke-linecap="round"/><line x1="214" y1="189" x2="222" y2="199" stroke="#E56F14" stroke-width="4" stroke-linecap="round"/></g></svg></span>
+          <span class="label">For your home</span>
+          <h2>AFA Interior Designs</h2>
+          <p>Furniture, lighting, rugs and finishes for every room. We plan it, source it and follow it all the way to your door.</p>
+        </div>
+        <span class="sticker">Your room, your vibe</span>
+        <span class="go">Go to AFA Interior Designs <span aria-hidden="true">&rarr;</span></span>
+      </a>
+    </div>
+
+    <div class="help">
+      <p>Not sure which one fits? Email us and we will point you to the right team.</p>
+      <b>sales@afasuppliesllc.com</b>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 AFA Supplies LLC, Texas, USA. Since 2010. Serving customers across the United States.</p>
+  </footer>
+</div>
+
+</body></html>

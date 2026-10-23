@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AFA Interior Designs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=Instrument+Sans:wght@400;500;600&family=Caveat:wght@500;600&display=swap">
+<style>
+/* Brand colors come straight from the AFA logo: navy #0B2D55 and orange #E56F14.
+   Orange fills buttons and numerals. Text that must stay readable on light grounds uses a deeper orange. */
+:root {
+  --bg: #F4F6F9; --panel: #FFFFFF; --ink: #0B2D55; --muted: #4A5B75; --rule: #D2D9E4;
+  --accent: #E56F14; --accent-ink: #0B2D55; --accent-text: #B04F08; --mark: #FFCFA3;
+  --band: #0B2D55; --band-ink: #F4F6F9; --band-muted: #B5C3D8; --band-num: #F28A34;
+  --note: #FFE2C6; --note-ink: #0B2D55; --field: #F8FAFC;
+  --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --hand: "Caveat", "Bradley Hand", "Segoe Print", cursive;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #071A31; --panel: #0E2747; --ink: #EAF0F8; --muted: #A8B8D0; --rule: #1F3A5E;
+    --accent: #F28A34; --accent-ink: #0B2D55; --accent-text: #F59B50; --mark: #8A4411;
+    --band: #0E3A6F; --band-ink: #EAF0F8; --band-muted: #BCCBE0; --band-num: #F28A34;
+    --note: #4A2E14; --note-ink: #FFE6CF; --field: #0A2040; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #071A31; --panel: #0E2747; --ink: #EAF0F8; --muted: #A8B8D0; --rule: #1F3A5E;
+  --accent: #F28A34; --accent-ink: #0B2D55; --accent-text: #F59B50; --mark: #8A4411;
+  --band: #0E3A6F; --band-ink: #EAF0F8; --band-muted: #BCCBE0; --band-num: #F28A34;
+  --note: #4A2E14; --note-ink: #FFE6CF; --field: #0A2040; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 18px;
+  line-height: 1.6;
+  padding-block: 0;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 1160px; margin: 0 auto; }
+a { color: var(--accent-text); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--display); font-optical-sizing: auto; margin: 0; text-wrap: balance; }
+.label { font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+.hl { background: linear-gradient(transparent 56%, var(--mark) 56% 94%, transparent 94%); padding: 0 0.06em; }
+
+/* nav */
+.bar { display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: center; justify-content: space-between; padding-block: 22px; }
+.mark-logo { font-family: var(--display); font-weight: 800; font-size: 22px; letter-spacing: -0.02em; text-decoration: none; color: var(--ink); }
+.mark-logo span { color: var(--accent-text); }
+.bar nav { display: flex; flex-wrap: wrap; gap: 8px 26px; align-items: center; }
+.bar nav a { color: var(--ink); text-decoration: none; font-weight: 500; font-size: 16px; }
+.bar nav a:hover { color: var(--accent-text); }
+.bar nav a.pill { background: var(--ink); color: var(--bg); padding: 10px 18px; font-weight: 600; }
+.bar nav a.pill:hover { background: var(--accent); color: var(--accent-ink); }
+
+/* hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.95fr); gap: 56px; padding-block: 48px 88px; align-items: center; }
+.eyebrow { color: var(--accent-text); margin-bottom: 22px; }
+h1 { font-weight: 800; font-size: clamp(42px, 7.2vw, 92px); line-height: 0.98; letter-spacing: -0.035em; margin-bottom: 28px; }
+.lede { font-size: clamp(18px, 2vw, 22px); line-height: 1.5; color: var(--muted); max-width: 31em; margin: 0 0 34px; }
+.actions { display: flex; flex-wrap: wrap; gap: 14px 22px; align-items: center; }
+.cta { display: inline-block; background: var(--accent); color: var(--accent-ink); font-family: var(--display); font-weight: 700; font-size: 18px; padding: 17px 30px; text-decoration: none; border: 0; cursor: pointer; }
+.cta:hover { filter: brightness(1.12); }
+.ghost { color: var(--ink); font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--ink); padding-block: 2px; }
+.ghost:hover { color: var(--accent-text); border-bottom-color: var(--accent); }
+
+/* list-to-job board */
+.board { position: relative; padding: 6px 12px 0; }
+.note { background: var(--note); color: var(--note-ink); padding: 22px 26px 26px; transform: rotate(-2.2deg); width: 88%; position: relative; z-index: 1; }
+.note .cap { font-family: var(--hand); font-size: 30px; font-weight: 600; line-height: 1; margin-bottom: 10px; display: block; }
+.note ul { list-style: none; margin: 0; padding: 0; font-family: var(--hand); font-size: 27px; line-height: 1.25; font-weight: 500; }
+.note li { padding-left: 24px; position: relative; }
+.note li::before { content: "-"; position: absolute; left: 4px; }
+.job { background: var(--panel); border: 2px solid var(--ink); margin: -34px 0 0 14%; padding: 20px 22px 8px; position: relative; z-index: 2; }
+.job .jt { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+.job .jt b { font-family: var(--display); font-size: 22px; letter-spacing: -0.01em; }
+.job .jt span { color: var(--muted); }
+.job ol { list-style: none; margin: 0; padding: 0; }
+.job li { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 12px; align-items: center; padding: 11px 0; border-bottom: 1px solid var(--rule); font-weight: 500; }
+.job li:last-child { border-bottom: 0; }
+.job .chk { width: 26px; height: 26px; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; }
+.job .chk svg { width: 16px; height: 16px; }
+@media (prefers-reduced-motion: no-preference) {
+  .job .chk { animation: pop 0.45s cubic-bezier(.2,1.4,.4,1) backwards; }
+  .job li:nth-child(2) .chk { animation-delay: 0.12s; }
+  .job li:nth-child(3) .chk { animation-delay: 0.24s; }
+  .job li:nth-child(4) .chk { animation-delay: 0.36s; }
+  .job li:nth-child(5) .chk { animation-delay: 0.48s; }
+  @keyframes pop { from { transform: scale(0.5); } to { transform: scale(1); } }
+  .cta, .bar nav a, .ghost { transition: filter 0.15s, color 0.15s, background 0.15s, border-color 0.15s; }
+}
+
+/* sections */
+section { padding-block: 88px; }
+.kicker { color: var(--accent-text); margin-bottom: 18px; display: block; }
+h2 { font-weight: 800; font-size: clamp(32px, 4.6vw, 56px); line-height: 1.02; letter-spacing: -0.03em; max-width: 16em; }
+
+/* pain */
+.pains { margin-top: 44px; border-top: 3px solid var(--ink); }
+.pain { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 12px 48px; padding: 28px 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
+.pain q { font-family: var(--display); font-weight: 700; font-size: clamp(24px, 3.2vw, 38px); line-height: 1.12; letter-spacing: -0.02em; quotes: "\201C" "\201D"; }
+.pain p { margin: 0; color: var(--muted); max-width: 26em; }
+
+/* steps band */
+.band-wrap { background: var(--band); color: var(--band-ink); box-shadow: 0 0 0 100vmax var(--band); clip-path: inset(0 -100vmax); }
+.band-wrap .kicker { color: var(--band-num); }
+.band-wrap h2 { color: var(--band-ink); }
+.steps { list-style: none; margin: 56px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 40px 32px; counter-reset: s; }
+.steps li { counter-increment: s; border-top: 2px solid var(--band-num); padding-top: 18px; }
+.steps li::before { content: counter(s); display: block; font-family: var(--display); font-weight: 800; font-size: 76px; line-height: 1; letter-spacing: -0.04em; color: var(--band-num); margin-bottom: 14px; }
+.steps strong { display: block; font-family: var(--display); font-size: 24px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 6px; }
+.steps span { color: var(--band-muted); }
+
+/* what we get */
+.cats { margin-top: 44px; border-top: 3px solid var(--ink); }
+.cat { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 8px 48px; padding: 26px 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
+.cat h3 { font-weight: 700; font-size: clamp(26px, 3.4vw, 40px); letter-spacing: -0.025em; line-height: 1.05; }
+.cat p { margin: 0; color: var(--muted); max-width: 32em; }
+.cat.odd h3 { color: var(--accent-text); }
+.fine { margin-top: 28px; max-width: 40em; color: var(--muted); }
+
+/* promises */
+.promises { margin-top: 44px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px 36px; }
+.promises div { border-top: 3px solid var(--ink); padding-top: 16px; }
+.promises h3 { font-weight: 700; font-size: 26px; letter-spacing: -0.02em; margin-bottom: 8px; }
+.promises p { margin: 0; color: var(--muted); }
+
+/* form */
+.ask { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 56px; align-items: start; }
+.ask .side p { color: var(--muted); max-width: 26em; margin: 22px 0 0; }
+.ask .email { margin-top: 26px; display: block; font-family: var(--display); font-weight: 700; font-size: clamp(20px, 2.6vw, 28px); letter-spacing: -0.02em; overflow-wrap: anywhere; }
+.formcard { background: var(--panel); border: 2px solid var(--ink); padding: 28px; }
+form { display: grid; gap: 18px; }
+.field { display: grid; gap: 6px; min-width: 0; }
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+label { color: var(--muted); }
+input, select, textarea { width: 100%; font: inherit; font-size: 17px; color: var(--ink); background: var(--field); border: 1px solid var(--rule); border-bottom: 2px solid var(--ink); border-radius: 0; padding: 13px 14px; min-width: 0; }
+textarea { min-height: 170px; resize: vertical; }
+button.cta { justify-self: start; }
+.out { margin-top: 22px; border-top: 2px solid var(--ink); padding-top: 22px; }
+.out[hidden] { display: none; }
+.out h3 { font-weight: 700; font-size: 24px; letter-spacing: -0.02em; margin-bottom: 6px; }
+.out p { margin: 0 0 14px; color: var(--muted); }
+.out pre { white-space: pre-wrap; overflow-wrap: anywhere; font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 14px; line-height: 1.55; background: var(--field); border: 1px solid var(--rule); padding: 14px; margin: 0 0 14px; }
+.btns { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.btn2 { font: inherit; font-weight: 600; background: transparent; color: var(--ink); border: 2px solid var(--ink); padding: 10px 18px; cursor: pointer; text-decoration: none; display: inline-block; }
+.btn2:hover { background: var(--ink); color: var(--bg); }
+
+footer { border-top: 3px solid var(--ink); padding-block: 30px 48px; display: flex; flex-wrap: wrap; gap: 10px 32px; justify-content: space-between; color: var(--muted); font-size: 15px; }
+footer p { margin: 0; }
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 44px; padding-block: 28px 64px; }
+  section { padding-block: 64px; }
+  .pain, .cat, .ask { grid-template-columns: minmax(0, 1fr); }
+  .ask { gap: 36px; }
+  .note { width: 94%; }
+  .job { margin-left: 6%; }
+}
+@media (max-width: 520px) {
+  body { font-size: 17px; }
+  .two { grid-template-columns: minmax(0, 1fr); }
+  .formcard { padding: 20px; }
+  .bar nav a.pill { padding: 9px 14px; }
+}
+
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); color-scheme: light; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+.xlink { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px 40px; align-items: center; border-top: 3px solid var(--ink); border-bottom: 1px solid var(--rule); padding-block: 36px; }
+.xlink h3 { font-weight: 800; font-size: clamp(26px, 3.4vw, 40px); letter-spacing: -0.025em; line-height: 1.05; margin: 8px 0 8px; }
+.xlink p { margin: 0; color: var(--muted); max-width: 34em; }
+.xlink .label { color: var(--accent-text); }
+@media (max-width: 700px) { .xlink { grid-template-columns: minmax(0, 1fr); } }
+.sw { display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: flex-end; }
+
+.roomboard { position: relative; padding: 6px 12px 0; }
+.sheet { background: var(--panel); border: 2px solid var(--ink); padding: 20px 22px 22px; position: relative; z-index: 2; }
+.sheet .jt { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; padding-bottom: 12px; border-bottom: 2px solid var(--ink); margin-bottom: 18px; }
+.sheet .jt b { font-family: var(--display); font-size: 22px; letter-spacing: -0.01em; }
+.sheet .jt span { color: var(--muted); }
+.chips { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.chip { min-width: 0; }
+.chip i { display: block; height: 92px; border: 1px solid var(--rule); }
+.chip span { display: block; margin-top: 6px; font-size: 14px; font-weight: 500; line-height: 1.25; }
+.roomnote { background: var(--note); color: var(--note-ink); padding: 18px 24px 22px; transform: rotate(-1.8deg); width: 82%; margin: 0 0 -22px 0; position: relative; z-index: 1; }
+.roomnote .cap { font-family: var(--hand); font-size: 30px; font-weight: 600; line-height: 1; display: block; margin-bottom: 6px; }
+.roomnote p { margin: 0; font-family: var(--hand); font-size: 27px; line-height: 1.25; font-weight: 500; }
+.sheet { margin-top: 0; padding-top: 38px; }
+@media (max-width: 520px) { .chips { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (prefers-reduced-motion: no-preference) { .chip i { transition: transform 0.2s; } .chip:hover i { transform: translateY(-4px); } }
+
+.logo-img { display: block; height: 72px; width: auto; background: #FFFFFF; padding: 5px 9px; border: 1px solid var(--rule); }
+.brand { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; }
+.mark-logo.brand .brandtext { font-family: var(--display); font-weight: 800; font-size: 24px; letter-spacing: -0.025em; color: var(--ink); }
+.brand .logo-img.mono { height: 54px; }
+
+.lamp { transform-origin: 200px 109px; }
+@media (prefers-reduced-motion: no-preference) {
+  .lamp { animation: sway 3.4s ease-in-out infinite alternate; }
+  @keyframes sway { from { transform: rotate(-6deg); } to { transform: rotate(6deg); } }
+}
+.ilogo svg { height: 100%; width: auto; display: block; }
+.lockup { background: #FFFFFF; border: 1px solid var(--rule); padding: 22px 34px 24px; text-align: center; }
+.lockup svg { height: 118px; width: auto; display: block; margin: 0 auto 8px; }
+.lockup b { display: block; font-family: var(--display); font-weight: 800; font-size: 46px; letter-spacing: -0.02em; color: #0B2D55; line-height: 1; }
+.lockup span { display: block; font-family: var(--display); font-weight: 700; font-size: 13px; letter-spacing: 0.38em; color: #E56F14; margin-top: 8px; }
+</style>
+</head><body>
+<div class="wrap">
+  <header class="bar">
+    <a class="mark-logo brand" href="index.html"><span class="logo-img mono ilogo"><svg viewBox="30 20 340 290" role="img" aria-label="AFA Interior Designs mark: the letter A with a pendant lamp"><path fill="#0B2D55" fill-rule="evenodd" d="M160 30 L240 30 L360 300 L285 300 L265 255 L135 255 L115 300 L40 300 Z M200 109 L247 215 L153 215 Z"/><g class="lamp"><line x1="200" y1="109" x2="200" y2="150" stroke="#0B2D55" stroke-width="4" stroke-linecap="round"/><path d="M178 172 A22 22 0 0 1 222 172 Z" fill="#E56F14"/><circle cx="200" cy="179" r="6.5" fill="#FFCFA3"/><line x1="186" y1="189" x2="178" y2="199" stroke="#E56F14" stroke-width="4" stroke-linecap="round"/><line x1="200" y1="191" x2="200" y2="203" stroke="#E56F14" stroke-width="4" stroke-linecap="round"/><line x1="214" y1="189" x2="222" y2="199" stroke="#E56F14" stroke-width="4" stroke-linecap="round"/></g></svg></span><span class="brandtext">AFA Interior Designs</span></a>
+    <nav aria-label="Sections">
+      <a href="#rooms">Rooms</a>
+      <a href="#how">How it works</a>
+      <a href="supplies.html">For your business</a>
+      <a class="pill" href="#ask">Tell us your room</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <div>
+        <p class="eyebrow label">Texas-based. Designing and furnishing homes across the United States.</p>
+        <h1>Tell us the room. We'll <span class="hl">furnish it.</span></h1>
+        <p class="lede">AFA Interior Designs plans, sources and delivers the furniture, lighting, rugs and finishes for your home. You choose the look. We handle the shopping, the ordering and the follow-through.</p>
+        <div class="actions">
+          <a class="cta" href="#ask">Tell us your room</a>
+          <a class="ghost" href="#rooms">See the rooms we do</a>
+        </div>
+      </div>
+
+      <div class="roomboard" aria-label="Example room board">
+        <div class="roomnote">
+          <span class="cap">the room</span>
+          <p>primary bedroom. calm, a little moody. bed, dresser, rug, good lamps.</p>
+        </div>
+        <div class="sheet">
+          <div class="jt"><b>Your room board</b><span class="label">Example</span></div>
+          <div class="chips">
+            <div class="chip"><i style="background:#C8A24E"></i><span>Brushed gold</span></div>
+            <div class="chip"><i style="background:#4A4D52"></i><span>Cerused charcoal</span></div>
+            <div class="chip"><i style="background:#D8C3A0"></i><span>White oak</span></div>
+            <div class="chip"><i style="background:#C9C6BE"></i><span>Linen gray</span></div>
+            <div class="chip"><i style="background:#1A1A1C"></i><span>Matte black</span></div>
+            <div class="chip"><i style="background:#9DB09A"></i><span>Sage</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="why" style="padding-top:24px">
+      <span class="kicker label">Sound familiar?</span>
+      <h2>Furnishing a home should be fun, not a second job.</h2>
+      <div class="pains">
+        <div class="pain"><q>I have forty saved items and no plan.</q><p>We turn the pile into a room that works together.</p></div>
+        <div class="pain"><q>Every brand ships on a different day.</q><p>We keep the orders, dates and deliveries straight so you do not have to.</p></div>
+        <div class="pain"><q>I do not know if this is a good price.</q><p>You get an itemized quote before you spend anything.</p></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="band-wrap">
+  <div class="wrap">
+    <section id="how">
+      <span class="kicker label">How it works</span>
+      <h2>Four steps. You make the fun decisions.</h2>
+      <ol class="steps">
+        <li><strong>Tell us about the room</strong><span>Photos, rough measurements and a few words about the feel you want.</span></li>
+        <li><strong>Review the plan and quote</strong><span>Every piece, finish and price in one document. Change anything you like.</span></li>
+        <li><strong>We order and track</strong><span>We place the orders with each brand and follow every delivery.</span></li>
+        <li><strong>It arrives at your home</strong><span>Pieces are delivered to your door, and we stay on it until the room is done.</span></li>
+      </ol>
+    </section>
+  </div>
+</div>
+
+<div class="wrap">
+  <section id="rooms">
+    <span class="kicker label">Rooms we do</span>
+    <h2>Every room in the house, one team to buy it all.</h2>
+    <div class="cats">
+      <div class="cat"><h3>Living rooms</h3><p>Sofas, sectionals, chairs, tables, media storage and the lamps that finish the corner.</p></div>
+      <div class="cat"><h3>Bedrooms</h3><p>Beds, dressers, nightstands, rugs and bedding built around how you want to wake up.</p></div>
+      <div class="cat"><h3>Dining and kitchen</h3><p>Dining tables, chairs, counter stools, storage and the pieces that make it a place to gather.</p></div>
+      <div class="cat"><h3>Home offices</h3><p>Desks, task chairs, shelving and lighting for a room you can work in all day.</p></div>
+      <div class="cat"><h3>Baths and lighting</h3><p>Faucets, fixtures, mirrors and lighting in the finishes you picked.</p></div>
+      <div class="cat odd"><h3>Whole-home projects</h3><p>Moving, building or refreshing everything? We run the full list, room by room.</p></div>
+    </div>
+    <p class="fine">Have a piece in mind already? Send us the link and we will price it.</p>
+  </section>
+
+  <section id="small" style="padding-top:0">
+    <span class="kicker label">Why work with us</span>
+    <h2>A designer who also does the legwork.</h2>
+    <div class="promises">
+      <div><h3>Trade access</h3><p>We buy through professional trade programs, which can mean better pricing and more choice than a retail cart.</p></div>
+      <div><h3>One person, every vendor</h3><p>Different brands, different timelines. One person keeps all of it moving.</p></div>
+      <div><h3>No guessing on budget</h3><p>Your quote lists each item and its price before you commit to anything.</p></div>
+    </div>
+  </section>
+
+  <section id="ask" style="padding-top:0">
+    <div class="ask">
+      <div class="side">
+        <span class="kicker label">Tell us your room</span>
+        <h2>Describe it. We'll come back with a plan.</h2>
+        <p>Not sure where to start? A few sentences and a photo are plenty.</p>
+        <b class="email">sales@afasuppliesllc.com</b>
+      </div>
+      <div class="formcard">
+        <form id="rfq" novalidate>
+          <div class="two">
+            <div class="field"><label class="label" for="name">Your name</label><input id="name" name="name" type="text" autocomplete="name"></div>
+            <div class="field"><label class="label" for="email">Your email</label><input id="email" name="email" type="email" autocomplete="email"></div>
+          </div>
+          <div class="two">
+            <div class="field"><label class="label" for="area">Which room</label>
+              <select id="area" name="area">
+                <option>Living room</option>
+                <option>Bedroom</option>
+                <option>Dining and kitchen</option>
+                <option>Home office</option>
+                <option>Bath and lighting</option>
+                <option>Whole home</option>
+              </select>
+            </div>
+            <div class="field"><label class="label" for="where">Home location (city, state)</label><input id="where" name="where" type="text"></div>
+          </div>
+          <div class="two">
+            <div class="field"><label class="label" for="budget">Rough budget</label>
+              <select id="budget" name="budget">
+                <option>Not sure yet</option>
+                <option>Under $2,500</option>
+                <option>$2,500 to $10,000</option>
+                <option>$10,000 to $25,000</option>
+                <option>$25,000 and up</option>
+              </select>
+            </div>
+            <div class="field"><label class="label" for="needby">Needed by</label><input id="needby" name="needby" type="text" placeholder="A date or just 'soon'"></div>
+          </div>
+          <div class="field"><label class="label" for="items">Your room</label><textarea id="items" name="items" placeholder="The feel you want, pieces you already like, links, sizes. Messy is fine."></textarea></div>
+          <button class="cta" type="submit">Get my request ready</button>
+        </form>
+        <div class="out" id="out" hidden aria-live="polite">
+          <h3>Your request is ready to send</h3>
+          <p>This page does not send messages itself. Open it in your email app, or copy it and send it to sales@afasuppliesllc.com.</p>
+          <pre id="outtext"></pre>
+          <div class="btns">
+            <a class="btn2" id="mail" href="#ask">Open in my email app</a>
+            <button class="btn2" id="copy" type="button">Copy request</button>
+            <span id="copied" class="label" style="color:var(--muted)"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0;padding-bottom:40px"><div class="xlink"><div><span class="label">Buying for a business?</span><h3>That is AFA Supplies.</h3><p>Printing, office, security, industrial and hard-to-find parts, sourced, bought, checked and delivered.</p></div><a class="cta" href="supplies.html">Visit AFA Supplies</a></div></section>
+
+  <footer>
+    <div class="lockup" aria-label="AFA Interior Designs logo"><svg viewBox="30 20 340 290" role="img" aria-label="AFA Interior Designs mark: the letter A with a pendant lamp"><path fill="#0B2D55" fill-rule="evenodd" d="M160 30 L240 30 L360 300 L285 300 L265 255 L135 255 L115 300 L40 300 Z M200 109 L247 215 L153 215 Z"/><g class="lamp"><line x1="200" y1="109" x2="200" y2="150" stroke="#0B2D55" stroke-width="4" stroke-linecap="round"/><path d="M178 172 A22 22 0 0 1 222 172 Z" fill="#E56F14"/><circle cx="200" cy="179" r="6.5" fill="#FFCFA3"/><line x1="186" y1="189" x2="178" y2="199" stroke="#E56F14" stroke-width="4" stroke-linecap="round"/><line x1="200" y1="191" x2="200" y2="203" stroke="#E56F14" stroke-width="4" stroke-linecap="round"/><line x1="214" y1="189" x2="222" y2="199" stroke="#E56F14" stroke-width="4" stroke-linecap="round"/></g></svg><b>AFA</b><span>INTERIOR DESIGNS</span></div>
+    <p>&copy; 2026 AFA Interior Designs, a service of AFA Supplies LLC, Texas, USA, in business since 2010.</p>
+    <p><a href="index.html">All of AFA</a> &nbsp;/&nbsp; <a href="supplies.html">AFA Supplies</a></p>
+  </footer>
+</div>
+<script>
+(function () {
+  var TO = 'sales@afasuppliesllc.com';
+  var form = document.getElementById('rfq');
+  var out = document.getElementById('out');
+  var outtext = document.getElementById('outtext');
+  var copyBtn = document.getElementById('copy');
+  var copied = document.getElementById('copied');
+  var mail = document.getElementById('mail');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = function (id) { return document.getElementById(id).value.trim(); };
+    var items = v('items');
+    if (!items) {
+      outtext.textContent = 'Add a few words about your room first, then try again.';
+      mail.hidden = true;
+      out.hidden = false;
+      return;
+    }
+    mail.hidden = false;
+    var lines = [
+      'Request for AFA Interior Designs',
+      '',
+      'Name: ' + (v('name') || 'Not given'),
+      'Email: ' + (v('email') || 'Not given'),
+      'Room: ' + v('area'),
+      'Home location: ' + (v('where') || 'Not given'),
+      'Rough budget: ' + v('budget'),
+      'Needed by: ' + (v('needby') || 'Not given'),
+      '',
+      'My room:',
+      items
+    ];
+    var text = lines.join('\n');
+    outtext.textContent = text;
+    mail.setAttribute('href', 'mailto:' + TO + '?subject=' + encodeURIComponent('Request for AFA Interior Designs') + '&body=' + encodeURIComponent(text));
+    out.hidden = false;
+    copied.textContent = '';
+  });
+
+  copyBtn.addEventListener('click', function () {
+    var text = outtext.textContent;
+    function fallback() {
+      try {
+        var r = document.createRange();
+        r.selectNodeContents(outtext);
+        var s = window.getSelection();
+        s.removeAllRanges();
+        s.addRange(r);
+        copied.textContent = 'Selected. Press copy.';
+      } catch (err) { copied.textContent = ''; }
+    }
+    try {
+      navigator.clipboard.writeText(text).then(function () {
+        copied.textContent = 'Copied';
+      }, fallback);
+    } catch (err) { fallback(); }
+  });
+})();
+</script>
+
+</body></html>
