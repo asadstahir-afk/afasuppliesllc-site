@@ -300,7 +300,7 @@ img { max-width: 100%; }
         <b class="email">sales@afasuppliesllc.com</b>
       </div>
       <div class="formcard">
-        <form id="rfq" novalidate>
+        <form id="rfq" action="https://formspree.io/f/myeeyapw" method="POST" novalidate>
           <div class="two">
             <div class="field"><label class="label" for="name">Your name</label><input id="name" name="name" type="text" autocomplete="name"></div>
             <div class="field"><label class="label" for="biz">Business</label><input id="biz" name="biz" type="text" autocomplete="organization"></div>
@@ -324,7 +324,7 @@ img { max-width: 100%; }
             <div class="field"><label class="label" for="needby">Needed by</label><input id="needby" name="needby" type="text" placeholder="A date or just 'soon'"></div>
           </div>
           <div class="field"><label class="label" for="items">Your list</label><textarea id="items" name="items" placeholder="One item per line. Part numbers, links and rough descriptions all work."></textarea></div>
-          <button class="cta" type="submit">Get my request ready</button>
+          <button class="cta" type="submit">Send my request</button>
         </form>
         <div class="out" id="out" hidden aria-live="polite">
           <h3>Your list is ready to send</h3>
@@ -358,17 +358,24 @@ img { max-width: 100%; }
   var copied = document.getElementById('copied');
   var mail = document.getElementById('mail');
 
+  var FORM_URL = 'https://formspree.io/f/myeeyapw';
+  var h3 = out.querySelector('h3');
+  var note = out.querySelector('p');
+  var submitBtn = form.querySelector('button[type=submit]');
+  var submitLabel = submitBtn.textContent;
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var v = function (id) { return document.getElementById(id).value.trim(); };
     var items = v('items');
     if (!items) {
+      h3.textContent = 'Almost there';
+      note.textContent = '';
       outtext.textContent = 'Add at least one item to your list first, then try again.';
       mail.hidden = true;
       out.hidden = false;
       return;
     }
-    mail.hidden = false;
     var lines = [
       'Request for AFA Supplies',
       '',
@@ -385,8 +392,33 @@ img { max-width: 100%; }
     var text = lines.join('\n');
     outtext.textContent = text;
     mail.setAttribute('href', 'mailto:' + TO + '?subject=' + encodeURIComponent('Request for AFA Supplies') + '&body=' + encodeURIComponent(text));
-    out.hidden = false;
     copied.textContent = '';
+
+    var data = {};
+    new FormData(form).forEach(function (val, key) { data[key] = val; });
+    data._subject = 'Request for AFA Supplies';
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    fetch(FORM_URL, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(function (r) {
+      if (!r.ok) { throw new Error('send failed'); }
+      h3.textContent = 'Sent. We will be in touch.';
+      note.textContent = 'Your request reached ' + TO + '. Here is a copy for your records.';
+      mail.hidden = true;
+      form.reset();
+    }).catch(function () {
+      h3.textContent = 'We could not send that automatically';
+      note.textContent = 'Nothing was lost. Open it in your email app, or copy it and send it to ' + TO + '.';
+      mail.hidden = false;
+    }).then(function () {
+      submitBtn.disabled = false;
+      submitBtn.textContent = submitLabel;
+      out.hidden = false;
+    });
   });
 
   copyBtn.addEventListener('click', function () {
